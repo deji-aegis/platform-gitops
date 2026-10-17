@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wattzgoat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: wattzgoat
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: wattzgoat
+        app.kubernetes.io/component: vulnerable-app
+    spec:
+      containers:
+        - name: wattzgoat
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi

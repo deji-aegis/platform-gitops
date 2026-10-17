@@ -1,0 +1,15 @@
+namespace: wattzgoat-prod
+image:
+  repository: ghcr.io/wattzgoat/wattzgoat-web
+  digest: ""
+  tag: ""
+replicas: 2
+resources:
+  requests:
+    cpu: 500m
+    memory: 1Gi
+  limits:
+    cpu: "2"
+    memory: 2Gi
+policyException:
+  enabled: false

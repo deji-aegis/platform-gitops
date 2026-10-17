@@ -1,0 +1,27 @@
+# Placeholder — replace with the official Argo CD HA install manifest
+# https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/
+#
+# Recommended: use the argo-cd Helm chart instead:
+#
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: argocd
+# spec:
+#   source:
+#     repoURL: https://argoproj.github.io/argo-helm
+#     chart: argo-cd
+#     targetRevision: 7.x
+#     helm:
+#       values: |
+#         server:
+#           replicas: 2
+#         controller:
+#           replicas: 1
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-bootstrap-placeholder
+  namespace: argocd
+data:
+  note: "Replace with real Argo CD install. See comments."

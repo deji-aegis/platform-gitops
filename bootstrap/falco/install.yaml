@@ -1,0 +1,14 @@
+# Placeholder — install Falco via Helm:
+#
+# helm repo add falcosecurity https://falcosecurity.github.io/charts
+# helm install falco falcosecurity/falco \
+#   --namespace falco --create-namespace \
+#   --set falcosidekick.enabled=true \
+#   --set falcosidekick.config.alertmanager.address=http://alertmanager.monitoring:9093
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: falco-bootstrap-placeholder
+  namespace: falco
+data:
+  note: "Install Falco via Helm. See comments."

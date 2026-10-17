@@ -1,0 +1,18 @@
+# Placeholder — install Cilium via Helm in production:
+#
+# helm repo add cilium https://helm.cilium.io
+# helm install cilium cilium/cilium \
+#   --namespace kube-system \
+#   --set kubeProxyReplacement=true \
+#   --set k8sServiceHost=${API_SERVER} \
+#   --set k8sServicePort=443 \
+#   --set hubble.enabled=true \
+#   --set hubble.relay.enabled=true \
+#   --set hubble.ui.enabled=true
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cilium-bootstrap-placeholder
+  namespace: kube-system
+data:
+  note: "Install Cilium via Helm. See comments."

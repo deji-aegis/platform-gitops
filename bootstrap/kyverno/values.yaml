@@ -1,0 +1,45 @@
+# Kyverno Helm values
+# Reference: https://kyverno.github.io/kyverno
+
+admissionController:
+  replicas: 3
+
+backgroundController:
+  replicas: 2
+
+cleanupController:
+  replicas: 1
+
+reportsController:
+  replicas: 2
+
+# Enable policy reports for dashboards
+features:
+  policyReports:
+    enabled: true
+  policyExceptions:
+    enabled: true
+
+# Resource limits tuned for a small cluster
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# Use cert-manager if available
+# If not, Kyverno self-manages its webhook certs
+certManager:
+  enabled: false
+
+# Webhook configuration
+config:
+  webhooks:
+    - namespaceSelector:
+        matchExpressions:
+          - key: kubernetes.io/metadata.name
+            operator: NotIn
+            values:
+              - kyverno

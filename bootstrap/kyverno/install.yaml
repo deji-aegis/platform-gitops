@@ -1,0 +1,13 @@
+# Placeholder — install Kyverno via Helm:
+#
+# helm repo add kyverno https://kyverno.github.io/kyverno
+# helm install kyverno kyverno/kyverno \
+#   --namespace kyverno --create-namespace \
+#   -f values.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kyverno-bootstrap-placeholder
+  namespace: kyverno
+data:
+  note: "Install Kyverno via Helm using values.yaml. See comments."

@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: apps-prod
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - git:
+        repoURL: https://github.com/YOUR_ORG/platform-gitops.git
+        revision: main
+        directories:
+          - path: applications/*/prod
+  template:
+    metadata:
+      name: '{{.path.basename}}-{{index .path.segments 1}}'
+    spec:
+      project: apps-prod
+      source:
+        repoURL: https://github.com/YOUR_ORG/platform-gitops.git
+        targetRevision: main
+        path: '{{.path.path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{index .path.segments 1}}-prod'
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=false

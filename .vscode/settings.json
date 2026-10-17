@@ -1,0 +1,14 @@
+{
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/application_v1alpha1.json": [
+      "argocd/applications/*.yaml",
+      "argocd/applications/**/*.yaml"
+    ],
+    "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/applicationset_v1alpha1.json": [
+      "argocd/applicationsets/*.yaml"
+    ],
+    "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/appproject_v1alpha1.json": [
+      "argocd/projects/*.yaml"
+    ]
+  }
+}

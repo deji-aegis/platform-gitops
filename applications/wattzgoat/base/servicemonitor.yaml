@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: wattzgoat
+  labels:
+    release: prometheus
+    app.kubernetes.io/name: wattzgoat
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: wattzgoat
+  endpoints:
+    - port: https
+      scheme: https
+      path: /metrics
+      interval: 30s
+      scrapeTimeout: 10s
+      tlsConfig:
+        insecureSkipVerify: true

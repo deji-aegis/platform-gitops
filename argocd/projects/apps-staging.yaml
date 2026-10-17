@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: apps-staging
+  namespace: argocd
+spec:
+  description: Staging applications
+  sourceRepos:
+    - "https://github.com/YOUR_ORG/platform-gitops.git"
+  destinations:
+    - namespace: "wattzgoat-staging"
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+    - group: "apps"
+      kind: Deployment
+    - group: ""
+      kind: Service
+    - group: ""
+      kind: ServiceAccount
+    - group: networking.k8s.io
+      kind: NetworkPolicy
+    - group: monitoring.coreos.com
+      kind: ServiceMonitor
+  orphanedResources:
+    warn: true
